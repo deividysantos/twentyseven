@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('banks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->unsignedBigInteger('id_icon');
             $table->timestamps();
+
+            $table->foreign('id_icon')->references('id')->on('icons')->onDelete('restrict');
         });
     }
 

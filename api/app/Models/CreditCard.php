@@ -15,10 +15,16 @@ class CreditCard extends Model
         'name',
         'id_bank',
         'due_day',
+        'id_user'
     ];
 
     public function bank()
     {
         return $this->belongsTo(Bank::class, 'id_bank');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
     }
 }

@@ -14,11 +14,17 @@ class Account extends Model
     protected $fillable = [
         'name',
         'id_bank',
-        'initial_value'
+        'initial_value',
+        'id_user'
     ];
 
     public function bank()
     {
         return $this->belongsTo(Bank::class, 'id_bank');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
     }
 }

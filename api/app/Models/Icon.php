@@ -15,4 +15,9 @@ class Icon extends Model
         'name',
         'link'
     ];
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class, 'id_icon');
+    }
 }

@@ -15,11 +15,17 @@ class Category extends Model
         'name',
         'id_icon',
         'description',
-        'type'
+        'type',
+        'id_user'
     ];
 
     public function icon()
     {
         return $this->belongsTo(Icon::class, 'id_icon');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
     }
 }

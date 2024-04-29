@@ -16,9 +16,11 @@ return new class extends Migration
             $table->string('name');
             $table->unsignedBigInteger('id_bank');
             $table->integer('due_day');
+            $table->unsignedBigInteger('id_user');
             $table->timestamps();
 
             $table->foreign('id_bank')->references('id')->on('banks')->onDelete('restrict');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('restrict');
         });
     }
 

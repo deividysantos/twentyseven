@@ -12,5 +12,21 @@ class Bank extends Model
     protected $table = 'banks';
     protected $fillable = [
         'name',
+        'id_icon'
     ];
+
+    public function account()
+    {
+        return $this->hasMany(Account::class, 'id_bank');
+    }
+
+    public function creditCards()
+    {
+        return $this->hasMany(CreditCard::class, 'id_bank');
+    }
+
+    public function icon()
+    {
+        return $this->belongsTo(Icon::class, 'id_icon');
+    }
 }
