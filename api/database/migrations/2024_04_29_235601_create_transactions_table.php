@@ -21,9 +21,9 @@ return new class extends Migration
             $table->unsignedBigInteger('id_creditCard')->nullable();
             $table->unsignedBigInteger('id_category');
 
-            $table->foreignId('id_account')->references('id')->on('accounts');
-            $table->foreignId('id_creditCard')->references('id')->on('credit_cards');
-            $table->foreignId('id_category')->references('id')->on('categories');
+            $table->foreign('id_account')->references('id')->on('accounts');
+            $table->foreign('id_creditCard')->references('id')->on('credit_cards');
+            $table->foreign('id_category')->references('id')->on('categories');
 
             $table->timestamps();
         });
