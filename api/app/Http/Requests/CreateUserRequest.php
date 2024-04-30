@@ -2,6 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateUserRequest extends FormRequest
@@ -42,5 +45,16 @@ class CreateUserRequest extends FormRequest
             'unique' => 'already exists a record with this value in the field :attribute',
             'email' => 'this field must be a email'
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        $errors = (new ValidationException($validator))->errors();
+
+        throw new HttpResponseException(
+            response()->json([
+                'errors' => $errors
+            ], 422)
+        );
     }
 }
